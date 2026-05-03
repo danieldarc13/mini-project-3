@@ -27,14 +27,7 @@ showSection("Part 1: Arrays");
 
 // TODO: Create the parkNames array here
 
-const parkNames = [
-  "Yellowstone",
-  "Grand Canyon",
-  "Yosemite",
-  "Zion",
-  "Great Smoky Mountains",
-  "Glacier",
-];
+const parkNames = ["Yellowstone", "Grand Canyon", "Yosemite", "Zion", "Great Smoky Mountains", "Glacier"];
 
 // TODO: show("Task 1: Parks Array", parkNames)
 
@@ -274,10 +267,7 @@ const locationVariable = otherPark.location;
 
 // TODO: show the region value from your intermediate variable
 
-show(
-  "Task 15: Access Nested Objects - Longhand Location Variable",
-  locationVariable,
-);
+show("Task 15: Access Nested Objects - Longhand Location Variable", locationVariable);
 
 const regionValue = locationVariable.region;
 
@@ -285,10 +275,7 @@ show("Task 15: Access Nested Objects - Longhand Region Value", regionValue);
 
 // TODO: show("Task 15 shorthand", otherPark.location.region)
 
-show(
-  "Task 15: Access Nested Objects - Shorthand Region Value",
-  otherPark.location.region,
-);
+show("Task 15: Access Nested Objects - Shorthand Region Value", otherPark.location.region);
 
 // ---- Task 16: Add a Method to an Object ----
 // Add a method called getDescription to myPark.
@@ -299,7 +286,13 @@ show(
 // TODO: Add a getDescription method to myPark
 // Hint: myPark.getDescription = function() { ... }
 
+myPark.getDescription = function () {
+  return myPark.name + " was established in " + myPark.established + " in " + myPark.state + ".";
+};
+
 // TODO: show("Task 16: myPark.getDescription()", myPark.getDescription())
+
+show("Task 16: myPark.getDescription()", myPark.getDescription());
 
 // ---- Task 17: Use 'this' Inside a Method ----
 // Create a new const variable called featuredPark using object literal notation.
@@ -314,8 +307,28 @@ show(
 
 // TODO: Create featuredPark with getLabel and getAge methods using 'this'
 
+const featuredPark = {
+  name: "Zion",
+  state: "Utah",
+  established: 1919,
+  annualVisitors: 4692417,
+};
+
+featuredPark.getLabel = function () {
+  return this.name + " National Park " + this.state;
+};
+
+featuredPark.getAge = function () {
+  return 2026 - this.established;
+};
+
 // TODO: show("Task 17: featuredPark.getLabel()", featuredPark.getLabel())
+
+show("Task 17: featuredPark.getLabel()", featuredPark.getLabel());
+
 // TODO: show("Task 17: featuredPark.getAge()", featuredPark.getAge())
+
+show("Task 17: featuredPark.getAge()", featuredPark.getAge());
 
 // ============================================================
 // PART 3: ARRAYS OF OBJECTS
@@ -331,16 +344,73 @@ showSection("Part 3: Arrays of Objects");
 
 // TODO: Create the parks array of park objects
 
+const parks = [
+  {
+    name: "Yellowstone",
+    state: "Wyoming",
+    established: 1872,
+    areaSqMiles: 3471,
+    annualVisitors: 4860552,
+    entranceFee: 35,
+  },
+  {
+    name: "Grand Canyon",
+    state: "Arizona",
+    established: 1919,
+    areaSqMiles: 1902,
+    annualVisitors: 4732368,
+    entranceFee: 35,
+  },
+  {
+    name: "Yosemite",
+    state: "California",
+    established: 1890,
+    areaSqMiles: 1169,
+    annualVisitors: 3900000,
+    entranceFee: 35,
+  },
+  {
+    name: "Zion",
+    state: "Utah",
+    established: 1919,
+    areaSqMiles: 229,
+    annualVisitors: 4600000,
+    entranceFee: 35,
+  },
+  {
+    name: "Great Smoky Mountains",
+    state: "Tennessee",
+    established: 1934,
+    areaSqMiles: 816,
+    annualVisitors: 13000000,
+    entranceFee: 0,
+  },
+  {
+    name: "Glacier",
+    state: "Montana",
+    established: 1910,
+    areaSqMiles: 1583,
+    annualVisitors: 2933616,
+    entranceFee: 35,
+  },
+];
+
 // TODO: showTable("Task 18: Parks Inventory", parks)
+
+showTable("Task 18: Parks Inventory", parks);
 
 // ---- Task 19: Loop Through the Array of Objects ----
 // Use .forEach() to loop through parks.
 // For each park, use console.log() to log a sentence like:
 //   "Yellowstone (Wyoming) - Est. 1872"
 
-showSection("Task 19: Loop through Parks (check console)");
+show("Task 19: Loop through Parks", "Check console");
 
 // TODO: Loop through parks with .forEach() and console.log each one
+
+parks.forEach(function (park) {
+  console.log(park.name + " (" + park.state + ") - Est. " + park.established);
+});
 
 // ---- Task 20: Filter the Parks Array ----
 // Use .filter() twice:
@@ -350,11 +420,23 @@ showSection("Task 19: Loop through Parks (check console)");
 
 // TODO: Create freeParks using .filter()
 
+const freeParks = parks.filter(function (park) {
+  return park.entranceFee === 0;
+});
+
 // TODO: showTable("Task 20: Free parks", freeParks)
+
+showTable("Task 20: Free parks", freeParks);
 
 // TODO: Create busyParks using .filter()
 
+const busyParks = parks.filter(function (park) {
+  return park.annualVisitors > 4000000;
+});
+
 // TODO: showTable("Task 20: Busy parks (4M+ visitors)", busyParks)
+
+showTable("Task 20: Busy parks (4M+ visitors)", busyParks);
 
 // ---- Task 21: Map the Parks Array to Labels ----
 // Use .map() to create a new array called parkLabels.
@@ -364,7 +446,13 @@ showSection("Task 19: Loop through Parks (check console)");
 
 // TODO: Create parkLabels using .map()
 
+const parkLabels = parks.map(function (park) {
+  return park.name + " - " + park.state + " (" + park.established + ")";
+});
+
 // TODO: show("Task 21: Park labels from map()", parkLabels)
+
+show("Task 21: Park labels from map()", parkLabels);
 
 // ============================================================
 // PART 4: OBJECT MANIPULATION
@@ -381,12 +469,30 @@ showSection("Part 4: Object Manipulation");
 
 // TODO: Create basePark
 
+const basePark = {
+  name: "Yosemite",
+  state: "California",
+  established: 1890,
+  areaSqMiles: 1169,
+  annualVisitors: 3900000,
+  entranceFee: 35,
+};
+
 // TODO: Copy it into updatedPark using Object.assign({}, basePark)
+
+const updatedPark = Object.assign({}, basePark);
 
 // TODO: Change one property on updatedPark
 
+updatedPark.entranceFee = 0;
+
 // TODO: show("Task 22: Original basePark (unchanged)", basePark)
+
+show("Task 22: Original basePark (unchanged)", basePark);
+
 // TODO: show("Task 22: updatedPark with changed property", updatedPark)
+
+show("Task 22: updatedPark with changed property", updatedPark);
 
 // ---- Task 23: Reference vs Value ----
 // Part A: Primitive copy by value
@@ -407,9 +513,48 @@ showSection("Part 4: Object Manipulation");
 
 // TODO: Part A - primitive copy demo
 
+let originalFee = 35;
+
+let saleFee = originalFee;
+
+saleFee = 0;
+
+show("Task 23 Part A: Primitive Copy Demo - originalFee", originalFee);
+
+show("Task 23 Part A: Primitive Copy Demo - saleFee", saleFee);
+
 // TODO: Part B - object reference demo
 
+const parkA = {
+  name: "Yosemite",
+  entranceFee: 35,
+};
+
+const parkB = parkA;
+
+parkB.entranceFee = 25;
+
+show("Task 23 Part B: Object Copy By Reference - parkA", parkA);
+
+show("Task 23 Part B: Object Copy By Reference - parkB", parkB);
+
+// Both parkA.entranceFee and parkB.entranceFee are changes because both parkA and parkB point to the same object in memory
+
 // TODO: Part C - object equality demo
+
+const park1 = {
+  name: "Yosemite",
+  entranceFee: 35,
+};
+
+const park2 = {
+  name: "Yosemite",
+  entranceFee: 35,
+};
+
+show("Task 23 Part C: Object Equality Demo - park1 === park2", park1 === park2);
+
+// It returns false because these are two different objects in memory although their properties are exactly the same
 
 // ---- Task 24: const with Objects and Arrays ----
 // Part A: Create a const object called myFavoritePark with a name property.
@@ -426,10 +571,38 @@ showSection("Part 4: Object Manipulation");
 
 // TODO: Part A - mutating a const object
 
+const myFavoritePark = {
+  name: "Yosemite",
+};
+
+show("Task 24 Part A: myfavoritePark.name original", myFavoritePark.name);
+
 // TODO: show("Task 24 Part A: myFavoritePark after property change", myFavoritePark)
+
+myFavoritePark.name = "Glacier";
+
+show("Task 24 Part A: myfavoritePark.name changed", myFavoritePark.name);
 
 // TODO: Part B - commented-out reassignment with error explanation
 
+try {
+  myFavoritePark = {
+    name: "Glacier",
+  };
+} catch (error) {
+  show("Task 24 Part B: myfavoritePark reassignment error", error.name + ": " + error.message);
+}
+
+// const variables cannot be reassigned; only properties within the arrays/objects they contain can be changed; primitives cannot be changed at all
+
 // TODO: Part C - mutating a const array
 
+const parkList = ["Yosemite", "Glacier"];
+
+show("Task 24 Part C: parkList before .push()", parkList);
+
 // TODO: show("Task 24 Part C: parkList after .push()", parkList)
+
+parkList.push("Yellowstone");
+
+show("Task 24 Part C: parkList after .push()", parkList);
